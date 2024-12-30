@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-black;
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply uppercase text-[20px] font-extrabold text-center;
+  }
+
+  .button {
+    @apply uppercase px-[42px] py-[10px] rounded-full text-center transition flex gap-1 items-center justify-center cursor-pointer;
+
+    &.button-primary {
+      @apply bg-primary hover:bg-primary-dark text-white;
+    }
+
+    &.button-secondary {
+      @apply bg-secondary hover:bg-secondary-dark text-white;
+    }
+
+    &.button-disabled {
+      @apply bg-disabled pointer-events-none opacity-50;
+    }
+  }
+
+  .form-input {
+    @apply w-full px-4 py-3 rounded-md border border-gray-300 
+    focus:border-[#1B3B35] focus:ring-1 focus:ring-[#1B3B35] 
+    outline-none transition-colors;
+  }
+}
