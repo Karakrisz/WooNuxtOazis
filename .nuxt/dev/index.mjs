@@ -513,7 +513,7 @@ function onConsoleLog(callback) {
   consola.wrapConsole();
 }
 
-const config$1 = {"default":{"token":{"type":"Bearer","name":"Authorization"},"proxyCookies":true,"tokenStorage":{"mode":"cookie","cookieOptions":{"maxAge":604800,"secure":false},"name":"gql:default"},"preferGETQueries":false,"host":"https://fuggonyoazis.hu/restapi/graphql","corsOptions":{"mode":"cors","credentials":"include"}}};
+const config$1 = {"default":{"token":{"type":"Bearer","name":"Authorization"},"proxyCookies":true,"tokenStorage":{"mode":"cookie","cookieOptions":{"maxAge":604800,"secure":false},"name":"gql:default"},"preferGETQueries":false,"host":"https://apioazis.hu/restapi/graphql","corsOptions":{"mode":"cors","credentials":"include"}}};
 const clients = {};
 const GqlNitro = { clients, config: config$1 };
 
@@ -896,7 +896,7 @@ const _inlineRuntimeConfig = {
             "name": "gql:default"
           },
           "preferGETQueries": false,
-          "host": "https://fuggonyoazis.hu/restapi/graphql",
+          "host": "https://apioazis.hu/restapi/graphql",
           "corsOptions": {
             "mode": "cors",
             "credentials": "include"
