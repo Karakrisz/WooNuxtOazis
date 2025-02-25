@@ -873,8 +873,8 @@ const _inlineRuntimeConfig = {
         "hideEmpty": ""
       }
     ],
-    "MAX_PRICE": 13000,
-    "FRONT_END_URL": "http://localhost:3000",
+    "MAX_PRICE": 2400,
+    "FRONT_END_URL": "https://www.fuggonyoazis.hu",
     "CURRENCY_CODE": "HUF",
     "CURRENCY_SYMBOL": "Ft",
     "WOO_NUXT_SEO": [],
