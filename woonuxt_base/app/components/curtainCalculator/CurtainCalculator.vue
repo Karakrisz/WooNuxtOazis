@@ -18,8 +18,16 @@ interface Product {
     };
 }
 
+interface Settings {
+    minWidth: number;
+    sewingPrice: number;
+    hossz: number;
+    basePrice: number;
+}
+
 interface CurtainCalculatorProps {
     product: Product;
+    settings?: Settings;
 }
 
 const props = defineProps<CurtainCalculatorProps>();
@@ -45,7 +53,22 @@ const isVitrazs = computed(() => {
     );
 });
 
+const isMeteraruOnly = computed(() => {
+    return props.product?.productCategories?.nodes?.some(
+        (cat) => cat.slug === 'meteraru-kizarolag' || cat.slug === 'méterárú-kizárólag'
+    );
+});
+
+const shouldShowCalculator = computed(() => {
+    return isCurtainType.value || isMeteraruOnly.value || props.product?.productCategories?.nodes?.some(
+        (cat) => cat.slug === 'szelesseg-meretre-vaghato'
+    );
+});
+
 const minWidth = computed(() => {
+    if (props.settings?.minWidth) {
+        return props.settings.minWidth;
+    }
     const minWidthMeta = props.product?.metaData?.find(
         (meta) => meta.key === '_curtain_min_width'
     );
@@ -53,6 +76,9 @@ const minWidth = computed(() => {
 });
 
 const maxLength = computed(() => {
+    if (props.settings?.hossz) {
+        return props.settings.hossz;
+    }
     const hosszMeta = props.product?.metaData?.find(
         (meta) => meta.key === 'hossz'
     );
@@ -60,6 +86,9 @@ const maxLength = computed(() => {
 });
 
 const sewingPricePerMeter = computed(() => {
+    if (props.settings?.sewingPrice) {
+        return props.settings.sewingPrice;
+    }
     const sewingPriceMeta = props.product?.metaData?.find(
         (meta) => meta.key === '_curtain_sewing_price'
     );
@@ -89,7 +118,7 @@ const calculateSewingPrice = () => {
 
 const calculateBasePrice = () => {
     if (!width.value) return 0;
-    const pricePerMeter = parseFloat(props.product?.regularPrice || '0');
+    const pricePerMeter = props.settings?.basePrice || parseFloat(props.product?.regularPrice || '0');
     return (parseFloat(width.value) / 100) * pricePerMeter;
 };
 
@@ -120,12 +149,17 @@ watch([width, length, sewingType], () => {
 });
 
 onMounted(() => {
-    basePrice.value = parseFloat(props.product?.regularPrice || '0');
+    basePrice.value = props.settings?.basePrice || parseFloat(props.product?.regularPrice || '0');
+    
+    // Ha méteráru kizárólag, akkor automatikusan állítsuk be a "Méteráru" opciót
+    if (isMeteraruOnly.value) {
+        sewingType.value = 'Méteráru';
+    }
 });
 </script>
 
 <template>
-    <div v-if="isCurtainType" class="space-y-4">
+    <div v-if="shouldShowCalculator" class="space-y-4">
         <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg text-sm">
             <div>
                 <span class="text-gray-600">Egységár:</span>
@@ -138,13 +172,19 @@ onMounted(() => {
         </div>
 
         <div class="p-4 border rounded-lg space-y-4">
-            <div class="flex gap-6">
+            <div v-if="!isMeteraruOnly" class="flex gap-6">
                 <label class="flex items-center gap-2 cursor-pointer">
                     <input v-model="sewingType" type="radio" value="Készre varrás" class="w-4 h-4 text-primary focus:ring-primary border-gray-300">
                     <span class="text-sm">Készre varrás</span>
                 </label>
                 <label class="flex items-center gap-2 cursor-pointer">
                     <input v-model="sewingType" type="radio" value="Méteráru" class="w-4 h-4 text-primary focus:ring-primary border-gray-300">
+                    <span class="text-sm">Méteráru</span>
+                </label>
+            </div>
+            <div v-else class="flex gap-6">
+                <label class="flex items-center gap-2">
+                    <input v-model="sewingType" type="radio" value="Méteráru" class="w-4 h-4 text-primary focus:ring-primary border-gray-300" checked>
                     <span class="text-sm">Méteráru</span>
                 </label>
             </div>
