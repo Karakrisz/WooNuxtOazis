@@ -873,7 +873,7 @@ const _inlineRuntimeConfig = {
         "hideEmpty": ""
       }
     ],
-    "MAX_PRICE": 3550,
+    "MAX_PRICE": 2400,
     "FRONT_END_URL": "https://www.fuggonyoazis.hu",
     "CURRENCY_CODE": "HUF",
     "CURRENCY_SYMBOL": "Ft",

@@ -3,10 +3,12 @@ const { toggleMobileMenu } = useHelpers();
 
 const links = [
   { text: "Főoldal", to: "/", prefetch: false },
-  { text: "Rólunk", to: "/rolunk", prefetch: false },
-  { text: "Galéria", to: "/galeria", prefetch: false },
-  { text: "Étlap", to: "/products", prefetch: false },
-  { text: "Kapcsolat", to: "/kapcsolat", prefetch: false },
+  { text: "Függöny", to: "/", prefetch: false },
+  { text: "Lakástextil", to: "/", prefetch: false },
+  { text: "Sötétítő", to: "/", prefetch: false },
+  { text: "Rövidáru", to: "/", prefetch: false },
+  { text: "Akciók", to: "/", prefetch: false },
+  { text: "Kapcsolat", to: "/", prefetch: false },
 ];
 </script>
 
