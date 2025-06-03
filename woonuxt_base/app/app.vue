@@ -20,8 +20,29 @@ watch(
 
 useHead({
   titleTemplate: (titleChunk) => {
-    return titleChunk ? `${titleChunk} - Függöny Oázis` : 'Függöny Oázis';
-  }
+    return titleChunk ? `${titleChunk} – Függöny Oázis` : 'Függöny Oázis'
+  },
+  meta: [
+    {
+      name: 'description',
+      content:
+        'Függöny Oázis – Széles választék, minőségi függönyök és roletták otthonába. Gyors kiszállítás, kedvező árak, szakértő segítség a stílusos lakberendezésért.'
+    },
+    {
+      name: 'keywords',
+      content: 'függöny, roletta, lakberendezés, függönybolt, dekoráció'
+    },
+    // (opcionálisan Open Graph, Twitter Card stb.)
+    {
+      property: 'og:title',
+      content: 'Függöny Oázis'
+    },
+    {
+      property: 'og:description',
+      content:
+        'Széles választékú, minőségi függönyök és roletták: gyors kiszállítás, kedvező árak és profi tanácsadás a stílusos otthonért.'
+    }
+  ]
 })
 </script>
 
@@ -40,7 +61,8 @@ useHead({
     <NuxtPage />
 
     <Transition name="fade">
-      <div v-if="isShowingCart || isShowingMobileMenu" class="bg-black opacity-25 inset-0 z-40 fixed" @click="closeCartAndMenu" />
+      <div v-if="isShowingCart || isShowingMobileMenu" class="bg-black opacity-25 inset-0 z-40 fixed"
+        @click="closeCartAndMenu" />
     </Transition>
 
     <AppFooter />

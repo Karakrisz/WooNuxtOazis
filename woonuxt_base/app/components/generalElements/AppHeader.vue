@@ -1,11 +1,12 @@
 <script setup lang="ts">
 const links = [
-  { name: 'Függöny', link: '/', prefetch: true },
-  { name: 'Lakástextil', link: '/' },
+  { name: 'Kezdőlap', link: '/' },
+  { name: 'Függöny', link: '/product-category/fuggonyok', prefetch: true },
+  { name: 'Lakástextil', link: '/product-category/lakastextilia' },
   { name: 'Sötétítő', link: '/', prefetch: true },
   { name: 'Rövidáru', link: '/' },
   { name: 'Akciók', link: '/', class: 'font-bold' },
-  { name: 'Kapcsolat', link: '/' },
+  { name: 'Kapcsolat', link: '/kapcsolat' },
 ];
 </script>
 
@@ -42,7 +43,9 @@ const links = [
     </div>
     <div class="bg-light-green h-[40px] hidden lg:flex">
       <div class="gap-16 justify-between flex items-center container ">
-        <NuxtLink v-for="link in links" :key="link.name" :to="link.link" class="uppercase text-light-yellow hover:text-light-pastel-green transition" :class="link.class">{{ link.name }}</NuxtLink>
+        <NuxtLink v-for="link in links" :key="link.name" :to="link.link"
+          class="uppercase text-light-yellow hover:text-light-pastel-green transition" :class="link.class">{{ link.name
+          }}</NuxtLink>
       </div>
     </div>
   </header>
