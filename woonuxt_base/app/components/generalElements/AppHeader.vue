@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const links = [
   { name: 'Kezdőlap', link: '/' },
-  { name: 'Függöny', link: '/product-category/fuggonyok', prefetch: true },
+  { name: 'Függöny', link: '/products?filter=category[fuggonyok]', prefetch: true },
   { name: 'Lakástextil', link: '/product-category/lakastextilia' },
   { name: 'Sötétítő', link: '/', prefetch: true },
   { name: 'Rövidáru', link: '/' },
