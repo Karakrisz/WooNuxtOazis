@@ -5,7 +5,7 @@
     <CategoryNavi />
     <FormContent />
     <FaqContent />
-    <BlogContent />
+    <!-- <BlogContent /> -->
   </main>
 </template>
 
